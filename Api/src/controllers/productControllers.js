@@ -29,7 +29,6 @@ const postProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
   const { id } = req.params;
-  console.log(id);
 
   try {
     const deletedProduct = await Product.findByIdAndDelete(id);
@@ -42,6 +41,7 @@ const deleteProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
   const { id } = req.params;
+
 
   try {
     const updateProduct = await Product.findByIdAndUpdate(id, req.body, {
