@@ -19,3 +19,17 @@ export const useGetProducts = create((set) => ({
       .then((response) => set((state) => ({ products: response })));
   },
 }));
+
+export const useGetUsers = create((set) => ({
+  users: [],
+
+  getAllUsers: async () => {
+    await fetch("http://localhost:3001/users", optionGet)
+    .then((response) => response.json())
+    .then((response) => set((state) => ({users: response})));
+  }
+}));
+
+export const usePostUser = create((set) => ({
+  
+}))

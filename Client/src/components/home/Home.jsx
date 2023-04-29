@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useGetProducts } from "../../store/products";
+import { useGetProducts } from "../../store/store";
 import { ProductCard } from "../card/ProductCard";
 
 export default function Home() {
