@@ -7,6 +7,7 @@ import Style from "./RegisterPage.css?inline";
 export default function Register() {
   const users = useGetUsers((state) => state.users);
   const { getAllUsers } = useGetUsers();
+  
 
   const navigate = useNavigate();
 
@@ -129,13 +130,13 @@ export default function Register() {
           name="username"
           onChange={(e) => handleChange(e)}
         ></input>
-        <div>
+        <>
           <ul>
             <li className={Style.li} id="user">
               El Nombre de Usuario debe tener entre 4 y 15 caracteres
             </li>
           </ul>
-        </div>
+        </>
         <input
           className="input-register"
           value={info.email}
@@ -144,7 +145,7 @@ export default function Register() {
           name="email"
           onChange={handleChange}
         ></input>
-        <div>
+        <>
           <ul>
             <li className={Style.li} id="mail">
               Ingresa un correo válido
@@ -153,7 +154,8 @@ export default function Register() {
               El correo no existe
             </li>
           </ul>
-        </div>
+        </>
+        <section>
         <input
           className="input-register"
           value={info.password}
@@ -170,7 +172,8 @@ export default function Register() {
           name="password2"
           onChange={handleChange}
         ></input>
-        <div>
+        </section>
+        <>
           <ul>
             <li className={Style.li} id="number">
               Debe contener al menos un número
@@ -188,7 +191,7 @@ export default function Register() {
               Las contraseñas deben coincidir
             </li>
           </ul>
-        </div>
+        </>
         {!errors.username &&
         !errors.email &&
         !errors.password &&
@@ -196,7 +199,7 @@ export default function Register() {
           <button
             className="button"
             onClick={() => {
-              dispatch(postUser(info));
+
               swal(
                 "Bienvenido/a!",
                 "Su cuenta fue creada con exito",

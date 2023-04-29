@@ -10,6 +10,16 @@ const optionGet = {
   },
 };
 
+const optionPost = {
+  method: "POST",
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    Origin: "",
+    authorization: "Barrer",
+  },
+}
+
 export const useGetProducts = create((set) => ({
   products: [],
 
@@ -31,5 +41,9 @@ export const useGetUsers = create((set) => ({
 }));
 
 export const usePostUser = create((set) => ({
-  
+  user: [],
+
+  postUser: async () => {
+    await fetch("http://localhost:3001/register", optionPost)
+  }
 }))
