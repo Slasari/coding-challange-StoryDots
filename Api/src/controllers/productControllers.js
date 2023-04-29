@@ -33,7 +33,6 @@ const deleteProduct = async (req, res) => {
 
   try {
     const deletedProduct = await Product.findByIdAndDelete(id);
-    console.log(deletedProduct);
     if (!deletedProduct) return res.json({ msg: "Product not found" });
     if (deletedProduct) return res.status(200).json({ msg: "product deleted" });
   } catch (e) {
