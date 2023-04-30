@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useGetUsers } from "../../store/store";
+import { useGetUsers, usePostUser } from "../../store/store";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import "./RegisterPage.css"
@@ -7,6 +7,7 @@ import "./RegisterPage.css"
 export default function Register() {
   const users = useGetUsers((state) => state.users);
   const { getAllUsers } = useGetUsers();
+  const {postUser} = usePostUser()
   
 
   const navigate = useNavigate();
@@ -114,7 +115,7 @@ export default function Register() {
       >
         Bienvenido!
       </h1>
-      <form
+      <section
         className="inputs"
         style={{
           textAlign: "center",
@@ -199,13 +200,15 @@ export default function Register() {
           <button
             className="button"
             onClick={() => {
-              
-              swal(
+
+              postUser("juan2", "juan2@hotmail.com", "Juan123")
+
+              /* swal(
                 "Bienvenido/a!",
                 "Su cuenta fue creada con exito",
                 "success"
-              );
-              navigate("/login");
+              ); */
+              /* navigate("/login"); */
             }}
           >
             Registrarse
@@ -223,7 +226,7 @@ export default function Register() {
           </button>
         )}
         <br />
-      </form>
+      </section>
     </main>
   );
 }

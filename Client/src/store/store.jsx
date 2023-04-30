@@ -43,6 +43,6 @@ export const usePostUser = create((set) => ({
         Origin: "",
         authorization: "Barrer",
       },
-    });
+    }).then(r => console.log({then:r})).catch(r => console.log({catch:r})).finally(r => console.log({finally:r}))
   },
 }));

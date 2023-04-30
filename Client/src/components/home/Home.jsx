@@ -39,6 +39,7 @@ export default function Home() {
                   image={e.image_url}
                   name={e.name}
                   price={e.price}
+                  description={e.description}
                 ></ProductCard>
               </article>
             );
