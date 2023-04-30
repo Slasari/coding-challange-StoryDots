@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Style from "./LandingPage.css?inline"
 
 export default function LandingPage() {
   return (
-    <div>
-      <h5>BIENVENIDO</h5>
-      <Link to="/home"><button>comenzar</button></Link>
-      
-    </div>
+    <main className={Style.LandingPage}>
+      <h1>BIENVENIDO</h1>
+      <Link to="/home">
+        <button>comenzar</button>
+      </Link>
+    </main>
   );
 }
