@@ -10,17 +10,6 @@ const optionGet = {
   },
 };
 
-const optionPost = {
-  method: "POST",
-  body: JSON.stringify({}),
-  headers: {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-    Origin: "",
-    authorization: "Barrer",
-  },
-}
-
 export const useGetProducts = create((set) => ({
   products: [],
 
@@ -36,15 +25,24 @@ export const useGetUsers = create((set) => ({
 
   getAllUsers: async () => {
     await fetch("http://localhost:3001/users", optionGet)
-    .then((response) => response.json())
-    .then((response) => set((state) => ({users: response})));
-  }
+      .then((response) => response.json())
+      .then((response) => set((state) => ({ users: response })));
+  },
 }));
 
 export const usePostUser = create((set) => ({
   user: [],
 
-  postUser: async () => {
-    await fetch("http://localhost:3001/register", optionPost)
-  }
-}))
+  postUser: async (username, email, password) => {
+    await fetch("http://localhost:3001/register", {
+      method: "POST",
+      body: JSON.stringify({username: username, email: email, password: password}),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Origin: "",
+        authorization: "Barrer",
+      },
+    });
+  },
+}));

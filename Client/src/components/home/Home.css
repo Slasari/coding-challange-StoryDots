@@ -10,4 +10,11 @@
     display: flex;
     justify-content: space-evenly;
     margin-top: 10vh;
+    background-color: #14c688;
+    color: white;
+}
+
+.cards{
+    display: flex;
+    justify-content: center;
 }

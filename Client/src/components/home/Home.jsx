@@ -34,7 +34,7 @@ export default function Home() {
         <section>
           {products?.map((e) => {
             return (
-              <article>
+              <article className="cards">
                 <ProductCard
                   image={e.image_url}
                   name={e.name}

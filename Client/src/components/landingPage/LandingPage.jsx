@@ -5,9 +5,9 @@ import "./LandingPage.css"
 export default function LandingPage() {
   return (
     <main className="LandingPage">
-      <h1>BIENVENIDO</h1>
+      <h1>Los mejores precios y la mejor calidad</h1>
       <Link to="/home">
-        <button>comenzar</button>
+        <button>Comenzar</button>
       </Link>
     </main>
   );

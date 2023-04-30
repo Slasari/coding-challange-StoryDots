@@ -211,8 +211,15 @@ export default function Register() {
             Registrarse
           </button>
         ) : (
-          <button  disabled>
-            Registrarse
+          <button
+          onClick={() => {
+            swal(
+              "Atención!",
+              "Verifica que tus datos sean correctos!",
+              "warning"
+            );
+          }}>
+            hola
           </button>
         )}
         <br />

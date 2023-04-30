@@ -15,11 +15,12 @@ const getUsers = async (req, res) => {
         : res.status(409).send("Contraseña inválida");
     } else {
       const users = await User.find({});
-      if(!users) return res.status(404).json({msg: 'Usuarios no encontrados'});
-      return res.json(users)
+      if (!users)
+        return res.status(404).json({ msg: "Usuarios no encontrados" });
+      return res.json(users);
     }
   } catch (e) {
-    return res.send(404).json({msg: `Error 404 - ${e}`});
+    return res.send(404).json({ msg: `Error 404 - ${e}` });
   }
 };
 
@@ -45,4 +46,16 @@ const userRegister = async (req, res) => {
   }
 };
 
-module.exports = { userRegister, getUsers };
+const deleteUser = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const deletedUser = await User.findByIdAndDelete(id);
+    if (!deletedUser) return res.json({ msg: "Usuario no encontrado" });
+    if (deletedUser) return res.status(200).json({ msg: "Usuario eliminado" });
+  } catch (e) {
+    return res.json({ msg: `Error 404 - ${e}` });
+  }
+};
+
+module.exports = { userRegister, getUsers, deleteUser };

@@ -51,7 +51,7 @@ export default function Login() {
   };
 
   return (
-    <div className="container">
+    <main className="container">
       <h1
         style={{
           textAlign: "center",
@@ -63,7 +63,7 @@ export default function Login() {
       </h1>
       <p>Ingresa con tu cuenta</p>
 
-      <div className="inputs">
+      <section className="inputs">
         <p>Ingresa tu email</p>
         <input
           className="input-login"
@@ -115,7 +115,7 @@ export default function Login() {
             className="button"
             onClick={() => swal(
               "Atención!",
-              "Por favor completar los campos",
+              "Verifica que tus datos esten correctos",
               "warning"
             )}
           >
@@ -123,7 +123,7 @@ export default function Login() {
           </button>
         )}
         <br />
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
