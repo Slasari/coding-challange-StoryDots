@@ -12,7 +12,7 @@ const optionGet = {
 
 const optionPost = {
   method: "POST",
-  body: JSON.stringify({data}),
+  body: JSON.stringify({}),
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",

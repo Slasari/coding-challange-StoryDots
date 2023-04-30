@@ -23,10 +23,10 @@ export default function Home() {
         </section>
         <nav>
           <ul className="nav">
-            <li>ordenar</li>
-            <li>precio</li>
-            <li>marca</li>
-            <li>popularidad</li>
+            <li>Categorias</li>
+            <li>Precios</li>
+            <li>Marcas</li>
+            <li>Mas Vistos</li>
           </ul>
         </nav>
       </header>

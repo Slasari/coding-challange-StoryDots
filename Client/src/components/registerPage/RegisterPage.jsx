@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useGetUsers } from "../../store/store";
 import { useNavigate } from "react-router-dom";
-import swal from "sweetalert2";
-import Style from "./RegisterPage.css?inline";
+import swal from "sweetalert";
+import "./RegisterPage.css"
 
 export default function Register() {
   const users = useGetUsers((state) => state.users);
@@ -104,7 +104,7 @@ export default function Register() {
   };
 
   return (
-    <main className={Style.container}>
+    <main className="container">
       <h1
         style={{
           textAlign: "center",
@@ -115,7 +115,7 @@ export default function Register() {
         Bienvenido!
       </h1>
       <form
-        className={Style.inputs}
+        className="inputs"
         style={{
           textAlign: "center",
           textTransform: "uppercase",
@@ -132,7 +132,7 @@ export default function Register() {
         ></input>
         <>
           <ul>
-            <li className={Style.li} id="user">
+            <li className="li" id="user">
               El Nombre de Usuario debe tener entre 4 y 15 caracteres
             </li>
           </ul>
@@ -147,15 +147,15 @@ export default function Register() {
         ></input>
         <>
           <ul>
-            <li className={Style.li} id="mail">
+            <li className="li" id="mail">
               Ingresa un correo válido
             </li>
-            <li className={Style.li} id="repeated">
-              El correo no existe
+            <li className="li" id="repeated">
+              El correo no debe estar registrado aún
             </li>
           </ul>
         </>
-        <section>
+        <section className="password">
         <input
           className="input-register"
           value={info.password}
@@ -175,19 +175,19 @@ export default function Register() {
         </section>
         <>
           <ul>
-            <li className={Style.li} id="number">
+            <li className="li" id="number">
               Debe contener al menos un número
             </li>
-            <li className={Style.li} id="upper">
+            <li className="li" id="upper">
               Debe contener al menos una letra mayúscula
             </li>
-            <li className={Style.li} id="lower">
+            <li className="li" id="lower">
               Debe contener al menos una letra minúscula
             </li>
-            <li className={Style.li} id="length">
+            <li className="li" id="length">
               Debe tener entre 8 y 30 caracteres
             </li>
-            <li className={Style.li} id="conform">
+            <li className="li" id="conform">
               Las contraseñas deben coincidir
             </li>
           </ul>
@@ -211,7 +211,7 @@ export default function Register() {
             Registrarse
           </button>
         ) : (
-          <button className={`${Style.btn} button`} disabled>
+          <button  disabled>
             Registrarse
           </button>
         )}

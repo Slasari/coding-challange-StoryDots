@@ -11,12 +11,6 @@
 }
 
 .inputs{
-    /* display: flex;
-    align-items: space-evenly;
-    justify-content: center;
-    flex-direction: column; */
-    /* gap: 40px; */
-    
     margin: 2rem auto;
     padding: 3rem;
     display: flex;
@@ -33,7 +27,7 @@
 
 
 .li{
-    font-size: 20px;
+    font-size: 15px;
     color: rgb(148, 148, 148);
 }
 
@@ -46,4 +40,11 @@
     
 .btn{
     margin-top: 3rem;
+}
+
+
+.password{
+    display: flex;
+    justify-content: center;
+    gap: 8vw;
 }
