@@ -199,7 +199,7 @@ export default function Register() {
           <button
             className="button"
             onClick={() => {
-
+              
               swal(
                 "Bienvenido/a!",
                 "Su cuenta fue creada con exito",

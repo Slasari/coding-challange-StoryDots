@@ -14,7 +14,7 @@ button {
   text-decoration: none;
 }
 
-.button:hover {
+button:hover {
   background-color: #059361;
   transition: 0.15s;
 }

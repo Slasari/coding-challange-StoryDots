@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useGetProducts } from "../../store/store";
 import { ProductCard } from "../card/ProductCard";
-import Style from "./Home.css?inline"
+import "./Home.css"
 
 export default function Home() {
   const products = useGetProducts((state) => state.products);
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <header>
-        <section className={Style.buttonSection}>
+        <section className="buttonSection">
           <Link to="/register">
             <button>Registrarse</button>
           </Link>
@@ -22,7 +22,7 @@ export default function Home() {
           </Link>
         </section>
         <nav>
-          <ul>
+          <ul className="nav">
             <li>ordenar</li>
             <li>precio</li>
             <li>marca</li>
