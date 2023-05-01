@@ -1,5 +1,8 @@
-const { encrypt, compare } = require("../helpers/helpers.js");
 const User = require("../models/User.js");
+
+const { encrypt, compare } = require("../helpers/helpers.js");
+const {tokenSign} = require("../helpers/helpers.js")
+
 
 const getUsers = async (req, res) => {
   const { email, password } = req.params;
@@ -58,4 +61,29 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = { userRegister, getUsers, deleteUser };
+const loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    console.log(req.body)
+    const user = await User.findOne({ email: email });
+
+    if (!user) return res.status(405).json({ msg: 'User not found' });
+
+    const checkPassword = await compare(password, user.password);
+    const tokenSession = await tokenSign(user);
+
+    if (checkPassword) {
+      res.status(200).send({
+        data: user,
+        tokenSession,
+      });
+    }
+    if (!checkPassword) {
+      return res.status(400).json({ msg: 'Invalid password' });
+    }
+  } catch (e) {
+    return res.status(404).json({ msg: `Error 404 - ${e}` });
+  }
+};
+
+module.exports = { userRegister, getUsers, deleteUser, loginUser };

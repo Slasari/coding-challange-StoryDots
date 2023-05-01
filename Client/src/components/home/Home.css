@@ -2,7 +2,7 @@
     display: flex;
     justify-content: flex-end;
     gap: 10px;
-    padding-right: 3vw;
+    padding-right: 15vw;
     padding-top: 5vh;
 }
 
@@ -17,4 +17,11 @@
 .cards{
     display: flex;
     justify-content: center;
+}
+
+.cardSection{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 35px;
+    margin-top: 10vh;
 }

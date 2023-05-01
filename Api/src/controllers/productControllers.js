@@ -9,21 +9,33 @@ const getProducts = async (req, res) => {
   }
 };
 
+const getProduct = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const productDetailed = await Product.findById(id);
+    return res.json(productDetailed);
+  } catch (e) {
+    return res.json({ msg: `Error 404 - ${e}` });
+  }
+};
+
 const postProduct = async (req, res) => {
-  const { name, description, image_url, price, views } = req.body;
+  const { name, description, image_url, price, brand} = req.body;
   try {
     const newProduct = new Product({
       name,
       description,
       image_url,
       price,
-      views,
+      brand,
+      views: 0
     });
 
     await newProduct.save();
-    return res.json(newProduct);
+    return res.status(200).json(newProduct);
   } catch (e) {
-    console.log(res.json({ msg: `Error 404 ${e}` }));
+    console.log(res.status(404).json({ msg: `Error 404 ${e}` }));
   }
 };
 
@@ -53,4 +65,4 @@ const updateProduct = async (req, res) => {
   }
 };
 
-module.exports = { getProducts, postProduct, deleteProduct, updateProduct };
+module.exports = { getProducts, postProduct, deleteProduct, updateProduct, getProduct };

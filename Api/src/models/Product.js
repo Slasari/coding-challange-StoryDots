@@ -6,6 +6,10 @@ const productSchema = new mongoose.Schema({
   image_url: { type: Array, required: true },
   price: { type: Number, required: true },
   views: { type: Number, required: true },
+  brand: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Brand',
+  },
 });
 
 module.exports = mongoose.model("Product", productSchema);

@@ -42,8 +42,8 @@ export default function Register() {
     } else {
       mail.style.color = "green";
     }
-    if (users.map((e) => e.email).includes(input.email)) {
-      errors.repeated = "El correo no existe";
+    if (users.map((e) => e.email.toLowerCase()).includes(input.email)) {
+      errors.repeated = "El correo ya existe";
       repeated.style.color = "red";
     } else {
       repeated.style.color = "green";
@@ -81,13 +81,16 @@ export default function Register() {
     return errors;
   };
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({
+    username: "falta"
+  });
 
   const [info, setInfo] = useState({
     username: "",
     email: "",
     password: "",
     password2: "",
+    repeated:""
   });
 
   const handleChange = (e) => {
@@ -140,7 +143,7 @@ export default function Register() {
         </>
         <input
           className="input-register"
-          value={info.email}
+          value={info.email.toLowerCase()}
           type="text"
           placeholder="Correo"
           name="email"
@@ -196,19 +199,19 @@ export default function Register() {
         {!errors.username &&
         !errors.email &&
         !errors.password &&
-        !errors.password2 ? (
+        !errors.password2 &&
+        !errors.repeated ? (
           <button
             className="button"
             onClick={() => {
 
-              postUser("juan2", "juan2@hotmail.com", "Juan123")
+              postUser(info.username, info.email, info.password)
 
-              /* swal(
+               swal(
                 "Bienvenido/a!",
                 "Su cuenta fue creada con exito",
                 "success"
-              ); */
-              /* navigate("/login"); */
+              ); 
             }}
           >
             Registrarse
@@ -218,11 +221,11 @@ export default function Register() {
           onClick={() => {
             swal(
               "Atención!",
-              "Verifica que tus datos sean correctos!",
+              "Verifica que todos los datos esten correctos!",
               "warning"
             );
           }}>
-            hola
+            Registrarse
           </button>
         )}
         <br />
