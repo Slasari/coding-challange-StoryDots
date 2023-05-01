@@ -124,12 +124,6 @@ export function AddProduct () {
             }
             <label className="label">Imagen Principal:</label> 
             <input type="file" name="mainImage" onChange={(e) => handleimage(e)}></input>
-           {/*  <input className="input-form" type="text" value={input.brands} name="brands" placeholder="Marca" onChange={(e) => handleChange(e)}></input> */}
-           {/*  {
-                errors.brands && errorTrue && (
-                    <p className="errors">*{errors.brands}</p>
-                )
-            } */}
             {
                 brands ? <select onChange={(e) => setInput({...input, brands : e.target.value})}>
                     <option value={""} selected>Seleccionar una marca</option>

@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { useGetProducts } from "../../store/store";
 import { ProductCard } from "../card/ProductCard";
 import "./Home.css";
-import { Footer } from "../footer/footer";
+import { Header } from "../header/Header";
+
+
 export default function Home() {
-  
   const products = useGetProducts((state) => state.products);
-  
+
   const { getAllProducts } = useGetProducts();
 
   const [userData, setUserdata] = useState(localStorage.getItem("Usuario"));
@@ -18,39 +19,14 @@ export default function Home() {
 
   return (
     <>
-      <header>
-        {!userData ? (
-          <section className="buttonSection">
-            <Link to="/register">
-              <button>Registrarse</button>
-            </Link>
-            <Link to="/login">
-              <button>Iniciar sesion</button>
-            </Link>
-          </section>
-        ) : (
-          <section className="buttonSection">
-            <Link>
-              <button
-                onClick={() => {
-                  localStorage.removeItem("Usuario");
-                  setUserdata("");
-                  swal("Listo", "Cerraste sesión correctamente", "success");
-                }}
-              >
-                Cerrar sesion
-              </button>
-            </Link>
-          </section>
-        )}
-        <nav>
-          <ul className="nav">
-            <li>Precios</li>
-            <li>Marcas</li>
-            <li>Mas Vistos</li>
-          </ul>
-        </nav>
-      </header>
+       <Header></Header>
+      <nav>
+        <ul className="nav">
+          <li>Precios</li>
+          <li>Marcas</li>
+          <li>Mas Vistos</li>
+        </ul>
+      </nav>
       <main>
         <section className="cardSection">
           {products?.map((e) => {

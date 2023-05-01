@@ -27,6 +27,20 @@ const getUsers = async (req, res) => {
   }
 };
 
+const updateUser = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const updateUser = await User.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    if (!updateUser) return res.json({ msg: "User not found" });
+    return res.json({ msg: "User Update" });
+  } catch (e) {
+    return res.json({ msg: `Error 404 - ${e}` });
+  }
+}
+
 const userRegister = async (req, res) => {
   try {
     const { username, password, email } = req.body;
@@ -65,7 +79,7 @@ const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     console.log(req.body)
-    const user = await User.findOne({ email: email });
+    const user = await User.findOne({ email: email.toLowerCase() });
 
     if (!user) return res.status(405).json({ msg: 'User not found' });
 
@@ -86,4 +100,4 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { userRegister, getUsers, deleteUser, loginUser };
+module.exports = { userRegister, getUsers, deleteUser, loginUser, updateUser };
