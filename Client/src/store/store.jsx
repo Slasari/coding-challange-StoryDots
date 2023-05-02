@@ -28,7 +28,7 @@ export const useGetProducts = create((set) => ({
   productsCopy: [],
 
   getAllProducts: async () => {
-    await fetch("http://localhost:3001/products", optionGet)
+    await fetch("https://story-dots-challange-back-api.vercel.app/products", optionGet)
       .then((response) => response.json())
       .then((response) =>
         set((state) => ({ products: response, productsCopy: response }))
@@ -49,7 +49,7 @@ export const useGetProduct = create((set) => ({
   product: [],
 
   getProduct: async (id) => {
-    await fetch("http://localhost:3001/product/" + id, optionGet)
+    await fetch("https://story-dots-challange-back-api.vercel.app/product/" + id, optionGet)
       .then((response) => response.json())
       .then((response) => set((state) => ({ product: response })));
   },
@@ -59,7 +59,7 @@ export const useGetBrands = create((set) => ({
   brands: "",
 
   getBrands: async () => {
-    await fetch("http://localhost:3001/brands", optionGet)
+    await fetch("https://story-dots-challange-back-api.vercel.app/brands", optionGet)
       .then((response) => response.json())
       .then((response) => set((state) => ({ brands: response })));
   },
@@ -67,7 +67,7 @@ export const useGetBrands = create((set) => ({
 
 export const useAddProduct = create((set) => ({
   addProduct: async (data) => {
-    await fetch("http://localhost:3001/products/add", {
+    await fetch("https://story-dots-challange-back-api.vercel.app/products/add", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -87,7 +87,7 @@ export const useGetUsers = create((set) => ({
   users: [],
 
   getAllUsers: async () => {
-    await fetch("http://localhost:3001/users", optionGet)
+    await fetch("https://story-dots-challange-back-api.vercel.app/users", optionGet)
       .then((response) => response.json())
       .then((response) => set((state) => ({ users: response })));
   },
@@ -95,7 +95,7 @@ export const useGetUsers = create((set) => ({
 
 export const usePostUser = create((set) => ({
   postUser: async (username, email, password) => {
-    await fetch("http://localhost:3001/register", {
+    await fetch("https://story-dots-challange-back-api.vercel.app/register", {
       method: "POST",
       body: JSON.stringify({
         username: username,
@@ -117,7 +117,7 @@ export const usePostUser = create((set) => ({
 
 export const useDeleteProduct = create((set) => ({
   deleteProduct: async (id) => {
-    await fetch("http://localhost:3001/products/" + id, optionDelete).then(
+    await fetch("https://story-dots-challange-back-api.vercel.app/products/" + id, optionDelete).then(
       (r) => {
         if (r.status === 200) {
           return swal("Operación completada", "Producto eliminado", "success");
@@ -136,7 +136,7 @@ export const useDeleteProduct = create((set) => ({
 
 export const useLoginUser = create((set) => ({
   loginUser: async (email, password) => {
-    await fetch("http://localhost:3001/login", {
+    await fetch("https://story-dots-challange-back-api.vercel.app/login", {
       method: "POST",
       body: JSON.stringify({ email: email, password: password }),
       headers: {
