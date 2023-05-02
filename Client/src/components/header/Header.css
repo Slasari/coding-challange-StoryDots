@@ -1,0 +1,17 @@
+.adminButtons{
+    display: flex;
+    gap: 10px;
+    padding-right: 13vh;
+}
+
+.containerHeader{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.buttonsContainer2{
+    display: flex;
+    flex-direction: row-reverse;
+}

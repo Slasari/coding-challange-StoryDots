@@ -2,18 +2,19 @@ import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useJwt } from "react-jwt";
+import "./Header.css";
+import { SearchBar } from "../searchbar/Searchbar";
 
 export function Header() {
   const [userData, setUserdata] = useState(localStorage.getItem("Usuario"));
 
   const { decodedToken } = useJwt(localStorage.getItem("Usuario"));
 
-  const navigate = useNavigate();
-
-  const admin = decodedToken?.isAdmin
+  const admin = decodedToken?.isAdmin;
 
   return (
-    <header>
+    <header className="containerHeader">
+      <SearchBar></SearchBar>
       {!userData ? (
         <section className="buttonSection">
           <Link to="/register">
@@ -24,23 +25,27 @@ export function Header() {
           </Link>
         </section>
       ) : (
-        <section className="buttonSection">
-          <Link>
-            <button
-              onClick={() => {
-                localStorage.removeItem("Usuario");
-                setUserdata("");
-                swal("Listo", "Cerraste sesión correctamente", "success");
-                navigate("/home")
-              }}
-            >
-              Cerrar sesion
-            </button>
-          </Link>
-          {admin && (
-            <Link to="/dashboardX">
-              <button>Administración</button>
+        <section className="buttonsContainer2">
+          <article className="buttonSection">
+            <Link>
+              <button
+                onClick={() => {
+                  localStorage.removeItem("Usuario");
+                  setUserdata("");
+                  swal("Listo", "Cerraste sesión correctamente", "success");
+                  window.location.href = "/";
+                }}
+              >
+                Cerrar sesion
+              </button>
             </Link>
+          </article>
+          {admin && (
+            <section className="adminButtons">
+              <Link to="/addProduct">
+                <button>Crear nuevo producto</button>
+              </Link>
+            </section>
           )}
         </section>
       )}

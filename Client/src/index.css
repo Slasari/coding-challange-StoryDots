@@ -1,5 +1,5 @@
 button {
-  background-color: #1ce39d;
+  background-color: #069e69;
   color: rgb(255, 255, 255);
   border-radius: 0.2rem;
   border: none;
@@ -15,7 +15,7 @@ button {
 }
 
 button:hover {
-  background-color: #059361;
+  background-color: #06b87a;
   transition: 0.15s;
 }
 

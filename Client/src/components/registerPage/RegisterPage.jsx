@@ -211,8 +211,10 @@ export default function Register() {
                 "Bienvenido/a!",
                 "Su cuenta fue creada con exito",
                 "success"
-              ); 
-            }}
+
+                ); 
+                navigate("/login")
+              }}
           >
             Registrarse
           </button>

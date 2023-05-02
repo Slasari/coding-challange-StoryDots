@@ -1,0 +1,15 @@
+.searchContainer{
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    left: 20px;
+    padding: 5px;
+    position: fixed;
+    top: 20px;
+    width: 250px;
+}
+
+.containerSearchBar{
+    display: flex;
+    justify-content: center;
+}

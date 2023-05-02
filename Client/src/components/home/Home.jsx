@@ -4,6 +4,7 @@ import { useGetProducts } from "../../store/store";
 import { ProductCard } from "../card/ProductCard";
 import "./Home.css";
 import { Header } from "../header/Header";
+import { Pagination } from "../Pagination/Pagination";
 
 
 export default function Home() {
@@ -11,25 +12,34 @@ export default function Home() {
 
   const { getAllProducts } = useGetProducts();
 
+  const [page, setPage] = useState(1)
+
+  const [page2, setPage2] = useState(1)
+
   const [userData, setUserdata] = useState(localStorage.getItem("Usuario"));
 
   useEffect(() => {
     getAllProducts();
   }, []);
 
+  console.log()
+
   return (
     <>
        <Header></Header>
       <nav>
         <ul className="nav">
-          <li>Precios</li>
-          <li>Marcas</li>
-          <li>Mas Vistos</li>
+          <button className="buttonsNav">Precios</button>
+          <button className="buttonsNav">Marcas</button>
+          <button className="buttonsNav">Mas Vistos</button>
         </ul>
       </nav>
       <main>
+        <section className="pagination">
+          <Pagination products={products} page={page} setPage={setPage} page2={page2} setPage2={setPage2}></Pagination>
+        </section>
         <section className="cardSection">
-          {products?.map((e) => {
+          {products?.slice((page-1)*5,  page * 5).map((e) => {
             return (
               <article className="cards">
                 <ProductCard

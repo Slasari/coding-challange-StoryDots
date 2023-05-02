@@ -2,16 +2,15 @@
     display: flex;
     justify-content: flex-end;
     gap: 10px;
-    padding-right: 15vw;
-    padding-top: 5vh;
 }
 
 .nav{
     display: flex;
     justify-content: space-evenly;
-    margin-top: 10vh;
-    background-color: #14c688;
+    margin-top: 5vh;
+    background-color: #069e69;
     color: white;
+    padding: 10px;
 }
 
 .cards{
@@ -24,4 +23,25 @@
     justify-content: space-evenly;
     gap: 35px;
     margin-top: 10vh;
+    padding-bottom: 3vh;
+    flex-wrap: wrap;
+}
+
+.buttonsNav{
+    background-color: #0d8b5f;
+}
+
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.pagination main{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 70%;
+    justify-content: center;
 }

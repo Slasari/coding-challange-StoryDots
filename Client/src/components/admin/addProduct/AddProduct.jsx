@@ -43,8 +43,8 @@ export function AddProduct () {
     const validate = (input) => {
         let errors = {}
         console.log(errors)
-        if (!input.name) {
-            errors.name = "El producto no tiene nombre"
+        if (!input.name || input.name.length > 15) {
+            errors.name = "El nombre del producto no es valido"
         }
         if (!input.description) {
             errors.description = "Agrega una descripción para el producto"

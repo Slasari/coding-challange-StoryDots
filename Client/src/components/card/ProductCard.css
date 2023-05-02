@@ -29,3 +29,52 @@
   display: flex;
   justify-content: center;
 }
+
+.cardBottons{
+  display: flex;
+  gap: .5rem;
+}
+
+.deleteButton {
+  background-color: #980e0b;
+  color: rgb(255, 255, 255);
+  border-radius: 0.2rem;
+  border: none;
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.46);
+  box-shadow: 0px 4px 4px 0px #500606;
+  padding: 0.3rem 0.7rem;
+  text-transform: capitalize;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.deleteButton:hover {
+  background-color: #610704;
+  transition: 0.15s;
+}
+
+.editButton {
+  background-color: #dbd113;
+  color: rgb(255, 255, 255);
+  border-radius: 0.2rem;
+  border: none;
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.46);
+  box-shadow: 0px 4px 4px 0px #858505;
+  padding: 0.3rem 0.7rem;
+  text-transform: capitalize;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.editButton:hover {
+  background-color: #89850a;
+  transition: 0.15s;
+}
+
+

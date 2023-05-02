@@ -2,7 +2,7 @@ const Product = require("../models/Product.js");
 
 const getProducts = async (req, res) => {
   try {
-    const products = await Product.find();
+    const products = await Product.find().populate("brand");
     return res.json(products);
   } catch (e) {
     return res.json({ msg: `Error 404 - ${e}` });
@@ -13,7 +13,7 @@ const getProduct = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const productDetailed = await Product.findById(id);
+    const productDetailed = await Product.findById(id).populate("brand");
     return res.json(productDetailed);
   } catch (e) {
     return res.json({ msg: `Error 404 - ${e}` });
