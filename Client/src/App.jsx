@@ -4,7 +4,6 @@ import Login from "./components/loginPage/LoginPage";
 import Register from "./components/registerPage/RegisterPage";
 import Home from "./components/home/Home";
 import { AddProduct } from "./components/admin/addProduct/AddProduct";
-import { Footer } from "./components/footer/Footer";
 import ProductDetail from "./components/productDetails/ProductDetail";
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
         <Route path="/addProduct" element={<AddProduct />} />
         <Route path="/product/:id" element={<ProductDetail />} />
       </Routes>
-      {/*    <Footer></Footer> */}
     </BrowserRouter>
   );
 }
