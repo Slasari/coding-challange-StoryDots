@@ -12,6 +12,8 @@ const getBrands = async (req, res) => {
 
 const addBrand = async (req, res) => {
     const { name, logo_url} = req.body;
+
+    console.log("hola" + name, logo_url)
   try {
     const newBrand = new Brand({
       name,
@@ -19,9 +21,9 @@ const addBrand = async (req, res) => {
     });
 
     await newBrand.save();
-    return res.json(newBrand);
+    return res.status(200).json(newBrand);
   } catch (e) {
-    console.log(res.json({ msg: `Error 404 ${e}` }));
+    console.log(res.status(404).json({ msg: `Error 404 ${e}` }));
   }
 };
 

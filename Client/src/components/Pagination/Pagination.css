@@ -1,0 +1,20 @@
+.buttonPag {
+    background-color: #056e49;
+    color: rgb(255, 255, 255);
+    border-radius: 0.2rem;
+    border: none;
+    -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.46);
+    -moz-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.46);
+    box-shadow: 0px 4px 4px 0px #02773f;
+    padding: 0.3rem 0.7rem;
+    text-transform: capitalize;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .buttonPag:hover {
+    background-color: #10d08d;
+    transition: 0.15s;
+  }

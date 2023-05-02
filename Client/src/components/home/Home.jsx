@@ -5,16 +5,16 @@ import { ProductCard } from "../card/ProductCard";
 import "./Home.css";
 import { Header } from "../header/Header";
 import { Pagination } from "../Pagination/Pagination";
-
+import { LoadingPage } from "../loadingPage/LoadingPage";
 
 export default function Home() {
   const products = useGetProducts((state) => state.products);
 
   const { getAllProducts } = useGetProducts();
 
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(1);
 
-  const [page2, setPage2] = useState(1)
+  const [page2, setPage2] = useState(1);
 
   const [userData, setUserdata] = useState(localStorage.getItem("Usuario"));
 
@@ -22,24 +22,29 @@ export default function Home() {
     getAllProducts();
   }, []);
 
-  console.log()
+  console.log();
 
   return (
     <>
-       <Header></Header>
+      <Header></Header>
       <nav>
         <ul className="nav">
-          <button className="buttonsNav">Precios</button>
-          <button className="buttonsNav">Marcas</button>
-          <button className="buttonsNav">Mas Vistos</button>
+          <section className="pagination">
+            <Pagination
+              products={products}
+              page={page}
+              setPage={setPage}
+              page2={page2}
+              setPage2={setPage2}
+            ></Pagination>
+          </section>
         </ul>
       </nav>
       <main>
-        <section className="pagination">
-          <Pagination products={products} page={page} setPage={setPage} page2={page2} setPage2={setPage2}></Pagination>
-        </section>
-        <section className="cardSection">
-          {products?.slice((page-1)*5,  page * 5).map((e) => {
+        {
+          products.length > 0 ?
+          <section className="cardSection">
+          {products?.slice((page - 1) * 5, page * 5).map((e) => {
             return (
               <article className="cards">
                 <ProductCard
@@ -52,7 +57,7 @@ export default function Home() {
               </article>
             );
           })}
-        </section>
+        </section> : <LoadingPage></LoadingPage>}
       </main>
     </>
   );

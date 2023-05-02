@@ -5,6 +5,8 @@ import Register from "./components/registerPage/RegisterPage";
 import Home from "./components/home/Home";
 import { AddProduct } from "./components/admin/addProduct/AddProduct";
 import ProductDetail from "./components/productDetails/ProductDetail";
+import { AddBrand } from "./components/admin/addBrand/AddBrand";
+import { LoadingPage } from "./components/loadingPage/LoadingPage";
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/addProduct" element={<AddProduct />} />
+        <Route path="/addBrand" element={<AddBrand />} />
         <Route path="/product/:id" element={<ProductDetail />} />
       </Routes>
     </BrowserRouter>

@@ -45,6 +45,9 @@ export function Header() {
               <Link to="/addProduct">
                 <button>Crear nuevo producto</button>
               </Link>
+              <Link to="/addBrand">
+              <button>Agregar nueva marca</button>
+              </Link>
             </section>
           )}
         </section>

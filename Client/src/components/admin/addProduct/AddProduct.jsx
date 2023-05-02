@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react"
 import swal from "sweetalert"
 import "./AddProduct.css"
+import { useNavigate } from "react-router-dom"
+import { useJwt } from "react-jwt"
 import { useAddProduct, useGetBrands, useGetProducts } from "../../../store/store"
+import { AccesoDenegado } from "../../accesoDenegado/AccesoDenegado"
 
 export function AddProduct () {
+
+    const navigate = useNavigate()
+
+    const { decodedToken } = useJwt(localStorage.getItem("Usuario"));
+
+    const admin = decodedToken?.isAdmin;
 
     const {addProduct} = useAddProduct()
 
@@ -30,6 +39,7 @@ export function AddProduct () {
 
     const handleChange = (e) => {
         e.preventDefault()
+        console.log(e.target.value)
         setInput({
             ...input,
             [e.target.name]: e.target.value
@@ -42,7 +52,6 @@ export function AddProduct () {
 
     const validate = (input) => {
         let errors = {}
-        console.log(errors)
         if (!input.name || input.name.length > 15) {
             errors.name = "El nombre del producto no es valido"
         }
@@ -62,6 +71,7 @@ export function AddProduct () {
     }
 
     const handleimage = async (e) => {
+        console.log(input.image)
         let theImage = input.image
         const files = e.target.files;
         const data = new FormData();
@@ -79,7 +89,7 @@ export function AddProduct () {
         setInput({...input, image: theImage})
       };
 
-      const handleSubmit = (e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault()
         const data = new FormData()
         data.append("name", input.name)
@@ -88,7 +98,7 @@ export function AddProduct () {
         data.append("price", input.price)
         data.append("brands", input.brands)
         console.log(data)
-        addProduct({
+        await addProduct({
             name: input.name,
             description: input.description,
             image_url: input.image,
@@ -105,10 +115,14 @@ export function AddProduct () {
         })
        getAllProducts()
         swal("Ya está", "El producto fue agregado con éxito", "success")
+        navigate("/")
     }
 
     return (
         <main>
+           { 
+           admin === true ? 
+           <>
         <div className="formPositioning">
             <input className="input-form" type="text" value={input.name} name="name" placeholder="Nombre del producto" onChange={(e) => handleChange(e)}></input>
             {
@@ -148,6 +162,7 @@ export function AddProduct () {
                     <button className="button" onClick={(e) => handleSubmit(e)}>Añadir producto</button>
             }
         </div>
+        </> : <AccesoDenegado></AccesoDenegado>}
     </main>
     )
 }

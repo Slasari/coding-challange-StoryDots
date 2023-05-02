@@ -83,6 +83,24 @@ export const useAddProduct = create((set) => ({
   },
 }));
 
+export const useAddBrand = create((set) => ({
+  addBrand: async (data) => {
+    await fetch("http://localhost:3001/brands/add", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Origin: "",
+        authorization: "Barrer",
+      },
+    })
+      .then((r) => console.log({ then: r }))
+      .catch((r) => console.log({ catch: r }))
+      .finally((r) => console.log({ finally: r }));
+  },
+}));
+
 export const useGetUsers = create((set) => ({
   users: [],
 
@@ -134,6 +152,22 @@ export const useDeleteProduct = create((set) => ({
   },
 }));
 
+export const useEditProduct = create((set) => ({
+  editProduct: async (edit, id) => {
+    await fetch("http://localhost:3001/products/" + id, {
+      method: "PUT",
+      body: JSON.stringify(edit),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Origin: "",
+        authorization: "Barrer",
+      },
+    })
+    .then((r) => console.log(r))
+  }
+}))
+
 export const useLoginUser = create((set) => ({
   loginUser: async (email, password) => {
     await fetch("http://localhost:3001/login", {
@@ -149,17 +183,17 @@ export const useLoginUser = create((set) => ({
       .then((r) => {
         if (r.status === 200) {
           r.json().then((e) => localStorage.setItem("Usuario", e.tokenSession));
-          return swal("Listo!", "Iniciaste Sesión", "success");
+          swal("Listo!", "Iniciaste Sesión", "success");
+          window.location.href = "/";
         } else if (r.status === 400) {
-          return swal("Error", "Contraseña incorrecta", "error");
+          swal("Error", "Contraseña incorrecta", "error");
         } else if (r.status === 405) {
-          return swal("Error", "Usuario no encontrado", "error");
+          swal("Error", "Usuario no encontrado", "error");
         } else {
-          return swal("Error", "Oh no! ha ocurrido un error :(", "error");
+          swal("Error", "Oh no! ha ocurrido un error :(", "error");
         }
       })
       .catch((r) => console.log({ catch: r }))
       .finally((r) => console.log({ finally: r }));
-      if(r.status === 200) {window.location.href = "/";}
     },
 }));

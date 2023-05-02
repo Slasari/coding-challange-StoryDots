@@ -24,7 +24,7 @@ export function ProductCard({ name, image, price, description, _id }) {
       {
         decodedToken?.isAdmin && <section className="cardBottons">
       <button className="deleteButton" onClick={(e) => deleteProduct(_id)}>Borrar</button>
-      <button className="editButton" onClick={(e) => console.log(admin)}>Editar</button>
+      <button className="editButton" >Editar</button>
       </section>}
       {
 
