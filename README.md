@@ -14,10 +14,8 @@ Tecnologias utilizadas en el Front: React, jsonwebtoken, sweetalet, zustand, htm
 GUIA: Para iniciar el projecto desde nuestra PC, vamos a seguir estos pasos:
 
 -Abrir el repositorio desde un editor de texto;
--Abrir una Terminal desde la carpeta Api (Back);
--Abrir una Terminal desde la carpeta Client (Front);
--Escribir en ambas terminales el siguiente comando: "npm run dev" (Primero en Api luego en Client);
--CTRL + click izquierdo en el link de la terminal para abrir el projecto en nuestro navegador;
+-Abrir una Terminal desde la carpeta Client (Front) y ejecutar el comando "npm run dev";
+-Abrir el navegador y acceder a la pagina usando la url "http://127.0.0.1:5173/"
 
 Cuenta de usuario ya creada: {
     email: cuentadeusuario@hotmail.com,
