@@ -21,7 +21,7 @@ export function Header() {
             <button>Registrarse</button>
           </Link>
           <Link to="/login">
-            <button>Iniciar sesion</button>
+            <button>Iniciar sesion hola</button>
           </Link>
         </section>
       ) : (

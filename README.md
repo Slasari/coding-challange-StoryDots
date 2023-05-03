@@ -9,6 +9,33 @@ Lo primero que hice fue crear los componentes (Home, ProductDetails, ProductCard
 
 Tecnologias utilizadas en el Back: cors, dotenv, express, jsonwebtoken, mongoose, nodemon.
 
+Endpoints disponibles back: 
+
+
+Products: {
+   get("/products");
+   get("/product/:id");
+   post("/products/add");
+   delete("/products/:id");
+   put("/products/:id");
+}
+
+Users: {
+    get("/users");
+    post("/register");
+    put("/user/:id");
+    delete("/user/delete/:id");
+    post("/login");
+}
+
+Brands: {
+    get("/brands"),;
+    post("/brands/add"),;
+    put("/brands/:id"),;
+    delete("/brand/:id"),;
+}
+
+
 Tecnologias utilizadas en el Front: React, jsonwebtoken, sweetalet, zustand, html, css.
 
 GUIA: Para iniciar el projecto desde nuestra PC, vamos a seguir estos pasos:
