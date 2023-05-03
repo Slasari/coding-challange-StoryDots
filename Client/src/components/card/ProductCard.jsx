@@ -24,7 +24,6 @@ export function ProductCard({ name, image, price, description, _id }) {
           <button className="deleteButton" onClick={(e) => deleteProduct(_id)}>
             Borrar
           </button>
-      {/*     <button className="editButton">Editar</button> */}
         </section>
       )}
       {}
