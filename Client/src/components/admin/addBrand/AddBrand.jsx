@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import swal from "sweetalert";
 import { useJwt } from "react-jwt";
 import "./AddBrand.css";
+import { useNavigate } from "react-router-dom";
 import {
   useAddBrand,
   useAddProduct,
@@ -16,6 +17,8 @@ export function AddBrand() {
   const { getBrands } = useGetBrands();
 
   const { decodedToken } = useJwt(localStorage.getItem("Usuario"));
+
+  const navigate = useNavigate();
 
   const admin = decodedToken?.isAdmin;
 
@@ -88,6 +91,7 @@ export function AddBrand() {
     });
     getBrands();
     swal("Ya está", "La marca fue agregada con Éxito", "success");
+    navigate("/")
   };
 
   return (
