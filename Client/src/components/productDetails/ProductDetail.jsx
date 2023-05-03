@@ -32,7 +32,6 @@ export default function ProductDetail(props) {
 
   const handleInputState = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     setShowInputs(e.target.value);
   };
 
@@ -63,12 +62,9 @@ export default function ProductDetail(props) {
     navigate("/");
   };
 
-  console.log(showInputs);
 
   useEffect(() => {
-    console.log(product);
     getProduct(id);
-    console.log(product.brand);
   }, []);
 
   return (
@@ -154,11 +150,11 @@ export default function ProductDetail(props) {
             <img className="imgRender" src={product.image_url}></img>
           </section>
           <section className="descriptionContainer">
-            <p className="description">
+            <section className="description">
               {product.description?.split("\n").map((ren) => {
                 return <p>{ren}</p>;
               })}
-            </p>
+            </section>
           </section>
         </>: <LoadingPage></LoadingPage>}
       </section>

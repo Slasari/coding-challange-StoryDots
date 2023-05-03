@@ -34,7 +34,6 @@ export function AddBrand() {
 
   const handleChange = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     setInput({
       ...input,
       [e.target.name]: e.target.value,
@@ -80,7 +79,6 @@ export function AddBrand() {
     const data = new FormData();
     data.append("name", input.name);
     data.append("image", input.image);
-    console.log(data);
     await addBrand({
       name: input.name,
       logo_url: input.image,

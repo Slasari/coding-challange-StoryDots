@@ -39,7 +39,6 @@ export function AddProduct () {
 
     const handleChange = (e) => {
         e.preventDefault()
-        console.log(e.target.value)
         setInput({
             ...input,
             [e.target.name]: e.target.value
@@ -71,7 +70,6 @@ export function AddProduct () {
     }
 
     const handleimage = async (e) => {
-        console.log(input.image)
         let theImage = input.image
         const files = e.target.files;
         const data = new FormData();
@@ -97,7 +95,6 @@ export function AddProduct () {
         data.append("image", input.image)
         data.append("price", input.price)
         data.append("brands", input.brands)
-        console.log(data)
         await addProduct({
             name: input.name,
             description: input.description,
@@ -140,9 +137,9 @@ export function AddProduct () {
             <input type="file" name="mainImage" onChange={(e) => handleimage(e)}></input>
             {
                 brands ? <select onChange={(e) => setInput({...input, brands : e.target.value})}>
-                    <option value={""} selected>Seleccionar una marca</option>
+                    <option defaultValue={""}>Seleccionar una marca</option>
                     {
-                        brands.map((e) => <option value={e._id}>{e.name}</option>)
+                        brands.map((e) => <option key={e._id}value={e._id}>{e.name}</option>)
                     }
                 </select>
                 :

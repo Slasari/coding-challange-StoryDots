@@ -57,8 +57,6 @@ const userRegister = async (req, res) => {
     });
     return res.status(200).json("Usuario creado satisfactoriamente");
   } catch (e) {
-    console.log(req.body);
-    console.log("e", e);
     return res.status(400).json({ msg: `Error - ${e}` });
   }
 };
@@ -78,7 +76,6 @@ const deleteUser = async (req, res) => {
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(req.body)
     const user = await User.findOne({ email: email.toLowerCase() });
 
     if (!user) return res.status(405).json({ msg: 'User not found' });

@@ -11,9 +11,8 @@ const getBrands = async (req, res) => {
   };
 
 const addBrand = async (req, res) => {
+  
     const { name, logo_url} = req.body;
-
-    console.log("hola" + name, logo_url)
   try {
     const newBrand = new Brand({
       name,

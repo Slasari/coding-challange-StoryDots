@@ -22,8 +22,6 @@ export default function Home() {
     getAllProducts();
   }, []);
 
-  console.log();
-
   return (
     <>
       <Header></Header>
@@ -46,7 +44,7 @@ export default function Home() {
           <section className="cardSection">
           {products?.slice((page - 1) * 5, page * 5).map((e) => {
             return (
-              <article className="cards">
+              <article  key={e._id} className="cards">
                 <ProductCard
                   _id={e._id}
                   image={e.image_url}
