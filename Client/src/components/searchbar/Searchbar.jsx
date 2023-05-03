@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useGetProducts } from "../../store/store";
-import "./SearchBar.css";
+import "./Searchbar.css";
 
 export const SearchBar = () => {
   const productsCopy = useGetProducts((state) => state.productsCopy);
