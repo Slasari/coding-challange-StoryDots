@@ -39,23 +39,25 @@ export default function Home() {
         </ul>
       </nav>
       <main>
-        {
-          products.length > 0 ?
+        {products.length > 0 ? (
           <section className="cardSection">
-          {products?.slice((page - 1) * 5, page * 5).map((e) => {
-            return (
-              <article  key={e._id} className="cards">
-                <ProductCard
-                  _id={e._id}
-                  image={e.image_url}
-                  name={e.name}
-                  price={e.price}
-                  description={e.description}
-                ></ProductCard>
-              </article>
-            );
-          })}
-        </section> : <LoadingPage></LoadingPage>}
+            {products?.slice((page - 1) * 5, page * 5).map((e) => {
+              return (
+                <article key={e._id} className="cards">
+                  <ProductCard
+                    _id={e._id}
+                    image={e.image_url}
+                    name={e.name}
+                    price={e.price}
+                    description={e.description}
+                  ></ProductCard>
+                </article>
+              );
+            })}
+          </section>
+        ) : (
+          <LoadingPage></LoadingPage>
+        )}
       </main>
     </>
   );

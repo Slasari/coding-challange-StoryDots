@@ -62,7 +62,6 @@ export default function ProductDetail(props) {
     navigate("/");
   };
 
-
   useEffect(() => {
     getProduct(id);
   }, []);
@@ -71,92 +70,94 @@ export default function ProductDetail(props) {
     <main>
       <Header></Header>
       <section className="containerAll">
-        {
-          product?.brand?.name.length > 0 ?
+        {product?.brand?.name.length > 0 ? (
           <>
-          <section className="container1">
-            <section className="positioning">
-              <h1 className="name">{product.name}</h1>
-              <h1 className="price">$ {product.price}</h1>
-              <h1 className="brand">{product.brand?.name}</h1>
-              <img
-                src={product.brand?.logo_url}
-                width={"150px"}
-                height={"150px"}
-              ></img>
-            </section>
-            {admin && (
-              <section>
-                <section className="editProductButtons">
-                  <button
-                    className="editButtonStyle"
-                    onClick={(e) => handleInputState(e)}
-                    value={product.name}
-                  >
-                    Cambiar Nombre
-                  </button>
-                  <button
-                    className="editButtonStyle"
-                    onClick={(e) => handleInputState(e)}
-                    value={product.price}
-                  >
-                    Cambiar Precio
-                  </button>
-                  <button
-                    className="editButtonStyle"
-                    onClick={(e) => handleInputState(e)}
-                    value={product.description}
-                  >
-                    Cambiar Descripción
-                  </button>
-                  <button onClick={(e) => handleSubmit(e)}>
-                    Guardar cambios
-                  </button>
-                </section>
-                <section className="editInputs">
-                  {showInputs === product.name && (
-                    <input
-                      className="input"
-                      placeholder="Modificar nombre"
-                      name="name"
-                      value={edit.name}
-                      onChange={(e) => handleChange(e)}
-                    ></input>
-                  )}
-                  {Number(showInputs) === product.price && (
-                    <input
-                      className="input"
-                      placeholder="Modificar Precio"
-                      name="price"
-                      value={edit.price}
-                      type="number"
-                      onChange={(e) => handleChange(e)}
-                    ></input>
-                  )}
-                  {showInputs === product.description && (
-                    <input
-                      className="input"
-                      placeholder="Modificar Descripción"
-                      name="description"
-                      value={edit.description}
-                      onChange={(e) => handleChange(e)}
-                    ></input>
-                  )}
-                </section>
+            <section className="container1">
+              <section className="positioning">
+                <h1 className="name">{product.name}</h1>
+                <h1 className="price">$ {product.price}</h1>
+                <h1 className="brand">{product.brand?.name}</h1>
+                <img
+                  src={product.brand?.logo_url}
+                  width={"150px"}
+                  height={"150px"}
+                ></img>
               </section>
-            )}
-          </section>
-          <section className="imageContainer">
-            <img className="imgRender" src={product.image_url}></img>
-          </section>
-          <section className="descriptionContainer">
-            <section className="description">
-              {product.description?.split("\n").map((ren) => {
-                return <p>{ren}</p>;
-              })}
+              {admin && (
+                <section>
+                  <section className="editProductButtons">
+                    <button
+                      className="editButtonStyle"
+                      onClick={(e) => handleInputState(e)}
+                      value={product.name}
+                    >
+                      Cambiar Nombre
+                    </button>
+                    <button
+                      className="editButtonStyle"
+                      onClick={(e) => handleInputState(e)}
+                      value={product.price}
+                    >
+                      Cambiar Precio
+                    </button>
+                    <button
+                      className="editButtonStyle"
+                      onClick={(e) => handleInputState(e)}
+                      value={product.description}
+                    >
+                      Cambiar Descripción
+                    </button>
+                    <button onClick={(e) => handleSubmit(e)}>
+                      Guardar cambios
+                    </button>
+                  </section>
+                  <section className="editInputs">
+                    {showInputs === product.name && (
+                      <input
+                        className="input"
+                        placeholder="Modificar nombre"
+                        name="name"
+                        value={edit.name}
+                        onChange={(e) => handleChange(e)}
+                      ></input>
+                    )}
+                    {Number(showInputs) === product.price && (
+                      <input
+                        className="input"
+                        placeholder="Modificar Precio"
+                        name="price"
+                        value={edit.price}
+                        type="number"
+                        onChange={(e) => handleChange(e)}
+                      ></input>
+                    )}
+                    {showInputs === product.description && (
+                      <input
+                        className="input"
+                        placeholder="Modificar Descripción"
+                        name="description"
+                        value={edit.description}
+                        onChange={(e) => handleChange(e)}
+                      ></input>
+                    )}
+                  </section>
+                </section>
+              )}
             </section>
-          </section>
-        </>: <LoadingPage></LoadingPage>}
+            <section className="imageContainer">
+              <img className="imgRender" src={product.image_url}></img>
+            </section>
+            <section className="descriptionContainer">
+              <section className="description">
+                {product.description?.split("\n").map((ren) => {
+                  return <p>{ren}</p>;
+                })}
+              </section>
+            </section>
+          </>
+        ) : (
+          <LoadingPage></LoadingPage>
+        )}
       </section>
     </main>
   );

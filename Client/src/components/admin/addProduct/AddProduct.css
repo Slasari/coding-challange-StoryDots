@@ -1,16 +1,16 @@
 .formPositioning {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    margin: 5rem auto;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 5rem auto;
+  gap: 1rem;
 }
 
-.label{
-    color: #158860;
-    font-weight: bold;
+.label {
+  color: #158860;
+  font-weight: bold;
 }
 
 .errors {
-    color: orangered
+  color: orangered;
 }

@@ -12,4 +12,4 @@ router.post("/brands/add", addBrand);
 router.put("/brands/:id", updateBrand);
 router.delete("/brand/:id", deleteBrand);
 
-module.exports = router
+module.exports = router;

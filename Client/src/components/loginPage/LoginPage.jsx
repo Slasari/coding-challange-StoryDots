@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
-import "./LoginPage.css"
+import "./LoginPage.css";
 import { useLoginUser } from "../../store/store";
 
 export default function Login() {
-  
   const navigate = useNavigate();
 
-  const {loginUser} = useLoginUser()
+  const { loginUser } = useLoginUser();
 
   const [count, setCount] = useState(false);
 
@@ -111,17 +110,24 @@ export default function Login() {
         info.email.length > 0 &&
         info.password.length > 0 &&
         !errors.password ? (
-          <button className="button" onClick={() => {loginUser(info.email, info.password)}}>
+          <button
+            className="button"
+            onClick={() => {
+              loginUser(info.email, info.password);
+            }}
+          >
             Iniciar Sesion
           </button>
         ) : (
           <button
             className="button"
-            onClick={() => swal(
-              "Atención!",
-              "Verifica que tus datos esten correctos",
-              "warning"
-            )}
+            onClick={() =>
+              swal(
+                "Atención!",
+                "Verifica que tus datos esten correctos",
+                "warning"
+              )
+            }
           >
             Iniciar Sesion
           </button>

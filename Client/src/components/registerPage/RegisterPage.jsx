@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useGetUsers, usePostUser } from "../../store/store";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
-import "./RegisterPage.css"
+import "./RegisterPage.css";
 
 export default function Register() {
   const users = useGetUsers((state) => state.users);
   const { getAllUsers } = useGetUsers();
-  const {postUser} = usePostUser()
-  
+  const { postUser } = usePostUser();
 
   const navigate = useNavigate();
 
@@ -82,7 +81,7 @@ export default function Register() {
   };
 
   const [errors, setErrors] = useState({
-    username: "falta"
+    username: "falta",
   });
 
   const [info, setInfo] = useState({
@@ -90,7 +89,7 @@ export default function Register() {
     email: "",
     password: "",
     password2: "",
-    repeated:""
+    repeated: "",
   });
 
   const handleChange = (e) => {
@@ -160,22 +159,22 @@ export default function Register() {
           </ul>
         </>
         <section className="password">
-        <input
-          className="input-register"
-          value={info.password}
-          type="password"
-          placeholder="Contraseña"
-          name="password"
-          onChange={handleChange}
-        ></input>
-        <input
-          className="input-register"
-          value={info.password2}
-          type="password"
-          placeholder="Confirmar Contraseña"
-          name="password2"
-          onChange={handleChange}
-        ></input>
+          <input
+            className="input-register"
+            value={info.password}
+            type="password"
+            placeholder="Contraseña"
+            name="password"
+            onChange={handleChange}
+          ></input>
+          <input
+            className="input-register"
+            value={info.password2}
+            type="password"
+            placeholder="Confirmar Contraseña"
+            name="password2"
+            onChange={handleChange}
+          ></input>
         </section>
         <>
           <ul>
@@ -204,29 +203,28 @@ export default function Register() {
           <button
             className="button"
             onClick={() => {
+              postUser(info.username, info.email, info.password);
 
-              postUser(info.username, info.email, info.password)
-
-               swal(
+              swal(
                 "Bienvenido/a!",
                 "Su cuenta fue creada con exito",
                 "success"
-
-                ); 
-                navigate("/login")
-              }}
+              );
+              navigate("/login");
+            }}
           >
             Registrarse
           </button>
         ) : (
           <button
-          onClick={() => {
-            swal(
-              "Atención!",
-              "Verifica que todos los datos esten correctos!",
-              "warning"
-            );
-          }}>
+            onClick={() => {
+              swal(
+                "Atención!",
+                "Verifica que todos los datos esten correctos!",
+                "warning"
+              );
+            }}
+          >
             Registrarse
           </button>
         )}

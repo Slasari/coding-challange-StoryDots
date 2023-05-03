@@ -11,7 +11,6 @@ import {
 import { AccesoDenegado } from "../../accesoDenegado/AccesoDenegado";
 
 export function AddBrand() {
-
   const { addBrand } = useAddBrand();
 
   const { getBrands } = useGetBrands();
@@ -93,42 +92,46 @@ export function AddBrand() {
 
   return (
     <main>
-        {
-            admin === true ? 
-            <>
-      <div className="formPositioning">
-        <input
-          className="input-form"
-          type="text"
-          value={input.name}
-          name="name"
-          placeholder="Nombre de la Marca"
-          onChange={(e) => handleChange(e)}
-        ></input>
-        {errors.name && errorTrue && <p className="errors">*{errors.name}</p>}
-        <label className="label">Imagen Principal:</label>
-        <input
-          type="file"
-          name="mainImage"
-          onChange={(e) => handleimage(e)}
-        ></input>
-        {!input.name || !input.image ? (
-          <button
-            className="button"
-            onClick={() => {
-              swal("Error", "Debes completar todos los campos", "error");
-              setErrorTrue(!false);
-            }}
-          >
-            Añadir Marca
-          </button>
-        ) : (
-          <button className="button" onClick={(e) => handleSubmit(e)}>
-            Añadir Marca
-          </button>
-        )}
-      </div>
-      </> : <AccesoDenegado></AccesoDenegado> }
+      {admin === true ? (
+        <>
+          <div className="formPositioning">
+            <input
+              className="input-form"
+              type="text"
+              value={input.name}
+              name="name"
+              placeholder="Nombre de la Marca"
+              onChange={(e) => handleChange(e)}
+            ></input>
+            {errors.name && errorTrue && (
+              <p className="errors">*{errors.name}</p>
+            )}
+            <label className="label">Imagen Principal:</label>
+            <input
+              type="file"
+              name="mainImage"
+              onChange={(e) => handleimage(e)}
+            ></input>
+            {!input.name || !input.image ? (
+              <button
+                className="button"
+                onClick={() => {
+                  swal("Error", "Debes completar todos los campos", "error");
+                  setErrorTrue(!false);
+                }}
+              >
+                Añadir Marca
+              </button>
+            ) : (
+              <button className="button" onClick={(e) => handleSubmit(e)}>
+                Añadir Marca
+              </button>
+            )}
+          </div>
+        </>
+      ) : (
+        <AccesoDenegado></AccesoDenegado>
+      )}
     </main>
   );
 }

@@ -15,7 +15,7 @@ const tokenSign = async (user) => {
       _id: user._id,
       email: user.email,
       username: user.username,
-      isAdmin: user.isAdmin
+      isAdmin: user.isAdmin,
     },
     process.env.TOKEN_JWT,
     {

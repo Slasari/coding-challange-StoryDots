@@ -21,7 +21,7 @@ const getProduct = async (req, res) => {
 };
 
 const postProduct = async (req, res) => {
-  const { name, description, image_url, price, brand} = req.body;
+  const { name, description, image_url, price, brand } = req.body;
   try {
     const newProduct = new Product({
       name,
@@ -29,7 +29,7 @@ const postProduct = async (req, res) => {
       image_url,
       price,
       brand,
-      views: 0
+      views: 0,
     });
 
     await newProduct.save();
@@ -65,4 +65,10 @@ const updateProduct = async (req, res) => {
   }
 };
 
-module.exports = { getProducts, postProduct, deleteProduct, updateProduct, getProduct };
+module.exports = {
+  getProducts,
+  postProduct,
+  deleteProduct,
+  updateProduct,
+  getProduct,
+};

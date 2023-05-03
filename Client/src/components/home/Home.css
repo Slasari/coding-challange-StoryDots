@@ -1,47 +1,47 @@
-.buttonSection{
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
+.buttonSection {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
-.nav{
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 5vh;
-    background-color: #069e69;
-    color: white;
-    padding: 10px;
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5vh;
+  background-color: #069e69;
+  color: white;
+  padding: 10px;
 }
 
-.cards{
-    display: flex;
-    justify-content: center;
+.cards {
+  display: flex;
+  justify-content: center;
 }
 
-.cardSection{
-    display: flex;
-    justify-content: space-evenly;
-    gap: 35px;
-    margin-top: 10vh;
-    padding-bottom: 3vh;
-    flex-wrap: wrap;
+.cardSection {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 35px;
+  margin-top: 10vh;
+  padding-bottom: 3vh;
+  flex-wrap: wrap;
 }
 
-.buttonsNav{
-    background-color: #0d8b5f;
+.buttonsNav {
+  background-color: #0d8b5f;
 }
 
-.pagination{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5px;
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
 }
 
-.pagination main{
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: center;
+.pagination main {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
 }

@@ -6,7 +6,7 @@ const indexRoutes = require("./src/routes/indexRoutes.js");
 const connectDb = require("./src/db/mongodb.js");
 const userRoutes = require("./src/routes/userRoutes.js");
 const productRoutes = require("./src/routes/productRoutes.js");
-const brandsRoutes = require("./src/routes/brandsRoutes.js")
+const brandsRoutes = require("./src/routes/brandsRoutes.js");
 
 connectDb();
 
