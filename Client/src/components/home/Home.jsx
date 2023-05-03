@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useGetProducts } from "../../store/store";
+import { useGetProduct, useGetProducts } from "../../store/store";
 import { ProductCard } from "../card/ProductCard";
 import "./Home.css";
 import { Header } from "../header/Header";
@@ -12,6 +12,8 @@ export default function Home() {
 
   const { getAllProducts } = useGetProducts();
 
+  const {resetProduct } = useGetProduct()
+
   const [page, setPage] = useState(1);
 
   const [page2, setPage2] = useState(1);
@@ -20,6 +22,7 @@ export default function Home() {
 
   useEffect(() => {
     getAllProducts();
+    resetProduct();
   }, []);
 
   return (

@@ -54,6 +54,10 @@ export const useGetProducts = create((set) => ({
 export const useGetProduct = create((set) => ({
   product: [],
 
+  resetProduct: () => {
+    set((state) => ({product: []}))
+  },
+
   getProduct: async (id) => {
     await fetch(
       "https://story-dots-challange-api.vercel.app/product/" + id,
