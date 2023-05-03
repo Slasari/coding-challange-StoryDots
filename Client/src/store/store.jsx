@@ -18,7 +18,7 @@ const optionDelete = {
     Accept: "application/json",
     "Content-Type": "application/json",
     Origin: "",
-    authorization: "Barrer",
+    authorization: `Barrer ${localStorage.getItem("Usuario")}`,
   },
 };
 
@@ -28,10 +28,16 @@ export const useGetProducts = create((set) => ({
   productsCopy: [],
 
   getAllProducts: async () => {
-    await fetch("https://story-dots-challange-api.vercel.app/products", optionGet)
+    await fetch(
+      "https://story-dots-challange-api.vercel.app/products",
+      optionGet
+    )
       .then((response) => response.json())
       .then((response) =>
-        set((state) => ({ products: response.reverse(), productsCopy: response }))
+        set((state) => ({
+          products: response.reverse(),
+          productsCopy: response,
+        }))
       );
   },
 
@@ -49,7 +55,10 @@ export const useGetProduct = create((set) => ({
   product: [],
 
   getProduct: async (id) => {
-    await fetch("https://story-dots-challange-api.vercel.app/product/" + id, optionGet)
+    await fetch(
+      "https://story-dots-challange-api.vercel.app/product/" + id,
+      optionGet
+    )
       .then((response) => response.json())
       .then((response) => set((state) => ({ product: response })));
   },
@@ -74,12 +83,9 @@ export const useAddProduct = create((set) => ({
         Accept: "application/json",
         "Content-Type": "application/json",
         Origin: "",
-        authorization: "Barrer",
+        authorization: `Barrer ${localStorage.getItem("Usuario")}`,
       },
-    })
-      .then((r) => console.log({ then: r }))
-      .catch((r) => console.log({ catch: r }))
-      .finally((r) => console.log({ finally: r }));
+    });
   },
 }));
 
@@ -92,12 +98,9 @@ export const useAddBrand = create((set) => ({
         Accept: "application/json",
         "Content-Type": "application/json",
         Origin: "",
-        authorization: "Barrer",
+        authorization: `Barrer ${localStorage.getItem("Usuario")}`,
       },
-    })
-      .then((r) => console.log({ then: r }))
-      .catch((r) => console.log({ catch: r }))
-      .finally((r) => console.log({ finally: r }));
+    });
   },
 }));
 
@@ -126,28 +129,22 @@ export const usePostUser = create((set) => ({
         Origin: "",
         authorization: "Barrer",
       },
-    })
-      .then((r) => console.log({ then: r }))
-      .catch((r) => console.log({ catch: r }))
-      .finally((r) => console.log({ finally: r }));
+    });
   },
 }));
 
 export const useDeleteProduct = create((set) => ({
   deleteProduct: async (id) => {
-    await fetch("https://story-dots-challange-api.vercel.app/products/" + id, optionDelete).then(
-      (r) => {
-        if (r.status === 200) {
-          return swal("Operación completada", "Producto eliminado", "success");
-        } else {
-          return swal(
-            "Error",
-            "Ha occurrido un error en la operación",
-            "error"
-          );
-        }
+    await fetch(
+      "https://story-dots-challange-api.vercel.app/products/" + id,
+      optionDelete
+    ).then((r) => {
+      if (r.status === 200) {
+        return swal("Operación completada", "Producto eliminado", "success");
+      } else {
+        return swal("Error", "Ha occurrido un error en la operación", "error");
       }
-    );
+    });
     window.location.href = "/";
   },
 }));
@@ -161,9 +158,9 @@ export const useEditProduct = create((set) => ({
         Accept: "application/json",
         "Content-Type": "application/json",
         Origin: "",
-        authorization: "Barrer",
+        authorization: `Barrer ${localStorage.getItem("Usuario")}`,
       },
-    }).then((r) => console.log(r));
+    });
   },
 }));
 
@@ -178,21 +175,18 @@ export const useLoginUser = create((set) => ({
         Origin: "",
         authorization: "Barrer",
       },
-    })
-      .then((r) => {
-        if (r.status === 200) {
-          r.json().then((e) => localStorage.setItem("Usuario", e.tokenSession));
-          swal("Listo!", "Iniciaste Sesión", "success");
-          window.location.href = "/";
-        } else if (r.status === 400) {
-          swal("Error", "Contraseña incorrecta", "error");
-        } else if (r.status === 405) {
-          swal("Error", "Usuario no encontrado", "error");
-        } else {
-          swal("Error", "Oh no! ha ocurrido un error :(", "error");
-        }
-      })
-      .catch((r) => console.log({ catch: r }))
-      .finally((r) => console.log({ finally: r }));
+    }).then((r) => {
+      if (r.status === 200) {
+        r.json().then((e) => localStorage.setItem("Usuario", e.tokenSession));
+        swal("Listo!", "Iniciaste Sesión", "success");
+        window.location.href = "/";
+      } else if (r.status === 400) {
+        swal("Error", "Contraseña incorrecta", "error");
+      } else if (r.status === 405) {
+        swal("Error", "Usuario no encontrado", "error");
+      } else {
+        swal("Error", "Oh no! ha ocurrido un error :(", "error");
+      }
+    });
   },
 }));
