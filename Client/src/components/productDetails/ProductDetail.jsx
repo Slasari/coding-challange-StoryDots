@@ -70,7 +70,7 @@ export default function ProductDetail(props) {
     <main>
       <Header></Header>
       <section className="containerAll">
-        {product?.brand?.name.length > 0 ? (
+        {(product?.brand?.name.length > 0 && product?.brand.logo_url.length > 0) ? (
           <>
             <section className="container1">
               <section className="positioning">
