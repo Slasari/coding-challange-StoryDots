@@ -31,7 +31,7 @@ export const useGetProducts = create((set) => ({
     await fetch("http://localhost:3001/products", optionGet)
       .then((response) => response.json())
       .then((response) =>
-        set((state) => ({ products: response, productsCopy: response }))
+        set((state) => ({ products: response.reverse(), productsCopy: response }))
       );
   },
 
